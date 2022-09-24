@@ -1,0 +1,13 @@
+독감,influenza
+열,fever
+암,cancer
+독,poison
+환자,victim
+내과의사,physician
+진료소,clinic
+징후,symptom
+의학,medicine
+약,drug
+위생학,hygiene
+코로나,covid
+배탈,stomachache
