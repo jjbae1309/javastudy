@@ -40,6 +40,6 @@ public class AddressVo {
 	
 	@Override
 	public String toString() {
-		return "ÀÌ¸§=" + name +", ÀüÈ­¹øÈ£=" + phoneNum + ", ÁÖ¼Ò=" + address + ", »ı³â¿ùÀÏ=" + birth;
+		return "ì´ë¦„=" + name +", ì „í™”ë²ˆí˜¸=" + phoneNum + ", ì£¼ì†Œ=" + address + ", ìƒë…„ì›”ì¼=" + birth;
 	}
 }

@@ -10,9 +10,9 @@ public class AddressBookMain {
 		MemAddressBook addressBook = new MemAddressBook();
 		
 		AddressVo address1 = new AddressVo();
-		address1.setAddress("¼­¿ï");
+		address1.setAddress("ê²½ê¸°ë„");
 		address1.setBirth("2009-09-04");
-		address1.setName("ÀçÁØ¹è");
+		address1.setName("ìˆ˜ì›");
 		address1.setPhoneNum("010-xxxx-xxxx");
 		
 		addressBook.insert(address1);
