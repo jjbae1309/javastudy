@@ -124,3 +124,4 @@ $RECYCLE.BIN/
 .classpath
 /build/
 /target/
+/logs/

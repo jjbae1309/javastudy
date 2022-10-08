@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="5">
+    <Properties>
+        <Property name="LOG_FORMAT">%d{yyyy-MM-dd HH:mm:ss.SSS} [%5p] [%10t] %c(%L) %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_FORMAT}"/>
+        </Console>  
+        
+		<RollingFile name="file" fileName="logs/jjbae.log"
+                     filePattern="logs/jjbae.log.%d{yyyy-MM-dd}">
+            <PatternLayout pattern="${LOG_FORMAT}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1440" modulate="true" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="logs" maxDepth="1">
+                    <IfAccumulatedFileCount exceeds="3"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+    	<Logger name="com.jjbae" level="DEBUG" additivity="false">
+    		<AppenderRef ref="console"/>
+    		<AppenderRef ref="file"/>
+    	</Logger>
+
+        <Root level="DEBUG">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -2,10 +2,15 @@ package com.jjbae.address.main;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.jjbae.address.service.MemAddressBook;
 import com.jjbae.address.vo.AddressVo;
 
 public class AddressBookMain {
+	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookMain.class);
+	
 	public static void main(String[] args) {
 		MemAddressBook addressBook = new MemAddressBook();
 		
@@ -19,7 +24,7 @@ public class AddressBookMain {
 		
 		List<AddressVo> addressList = addressBook.select(new AddressVo());
 		for (int i = 0; i < addressList.size(); i++) {
-			System.out.println(addressList.get(i));
+			LOGGER.debug(addressList.get(i).toString());
 		}
 	}
 }

@@ -3,9 +3,14 @@ package com.jjbae.address.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.jjbae.address.vo.AddressVo;
 
 public class MemAddressBook implements AddressBookIf {
+	private static Logger LOGGER = LoggerFactory.getLogger(MemAddressBook.class);
+	
 	private List<AddressVo> addressList = new ArrayList<>();
 	
 	@Override
@@ -17,6 +22,8 @@ public class MemAddressBook implements AddressBookIf {
 	@Override
 	public int insert(AddressVo paramData) {
 		// TODO Auto-generated method stub
+		LOGGER.info("paramData:" + paramData);
+		
 		addressList.add(paramData);
 		return 1;
 	}
