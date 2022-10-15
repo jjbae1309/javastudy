@@ -1,11 +1,46 @@
 package com.jjbae.address.vo;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class AddressVo {
+	/**
+	 * 고유번호
+	 */
+	private int seqNum;
+	
+	/**
+	 * 이름
+	 */
 	private String name;
+	
+	/**
+	 * 전화번호1
+	 */
 	private String phoneNum;
+	
+	/**
+	 * 전화번호2
+	 */
+	private String phoneNum2;
+	
+	/**
+	 * 생년월일
+	 */
 	private String birth;
+	
+	/**
+	 * 주소
+	 */
 	private String address;
 	
+	public int getSeqNum() {
+		return seqNum;
+	}
+
+	public void setSeqNum(int seqNum) {
+		this.seqNum = seqNum;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -22,6 +57,14 @@ public class AddressVo {
 		this.phoneNum = phoneNum;
 	}
 	
+	public String getPhoneNum2() {
+		return phoneNum2;
+	}
+
+	public void setPhoneNum2(String phoneNum2) {
+		this.phoneNum2 = phoneNum2;
+	}
+
 	public String getBirth() {
 		return birth;
 	}
@@ -40,6 +83,6 @@ public class AddressVo {
 	
 	@Override
 	public String toString() {
-		return "이름=" + name +", 전화번호=" + phoneNum + ", 주소=" + address + ", 생년월일=" + birth;
+		return ToStringBuilder.reflectionToString(this);
 	}
 }
