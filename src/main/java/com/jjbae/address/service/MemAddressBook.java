@@ -80,6 +80,22 @@ public class MemAddressBook implements AddressBookIf {
 	@Override
 	public int delete(AddressVo paramData) {
 		// TODO Auto-generated method stub
+		int paramSeq = paramData.getSeqNum();
+		
+		int deleteIndex = -1;
+		for (int i = 0; i < addressList.size(); i++) {
+			AddressVo oneAddress = addressList.get(i);
+			int oneSeq = oneAddress.getSeqNum();
+			if (paramSeq == oneSeq) {
+				deleteIndex = i;
+				break;
+			}
+		}
+		
+		if (deleteIndex >= 0) {
+			addressList.remove(deleteIndex);
+		}
+		
 		return 0;
 	}
 	

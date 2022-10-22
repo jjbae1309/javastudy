@@ -15,12 +15,12 @@ public class SwingPanel extends JPanel {
 	
 	private void initComponent() {
 		/*
-		 * FlowLayout : ¹° Èå¸£µíÀÌ ¹èÄ¡. º°µµ·Î ÁöÁ¤ ¾Ê ÇÏ¸é ÀÌ ·¹ÀÌ¾Æ¿ôÀÌ µÈ´Ù.
-		 * BorderLayout : ¹æÀ§(EAST, WEST, NORTH, SOUTH, CENTER)·Î ¹èÄ¡
-		 * GridLayout : ¹ÙµÏÆÇ °İÀÚ·Î ¹èÄ¡. row, column ÁöÁ¤
-		 * null : ÁÂÇ¥¸¦ Á÷Á¢ ÁöÁ¤
+		 * FlowLayout : ë¬¼ íë¥´ë“¯ì´ ë°°ì¹˜. ë³„ë„ë¡œ ì§€ì • ì•Š í•˜ë©´ ì´ ë ˆì´ì•„ì›ƒì´ ëœë‹¤.
+		 * BorderLayout : ë°©ìœ„(EAST, WEST, NORTH, SOUTH, CENTER)ë¡œ ë°°ì¹˜
+		 * GridLayout : ë°”ë‘‘íŒ ê²©ìë¡œ ë°°ì¹˜. row, column ì§€ì •
+		 * null : ì¢Œí‘œë¥¼ ì§ì ‘ ì§€ì •
 		 * CardLayout : 
-		 * GridBagLayout : ÀÌ°É·Î ¸ğµç °ÍÀÌ Ç¥Çö °¡´É
+		 * GridBagLayout : ì´ê±¸ë¡œ ëª¨ë“  ê²ƒì´ í‘œí˜„ ê°€ëŠ¥
 		 */
 		
 		/* FlowLayout
@@ -72,11 +72,11 @@ public class SwingPanel extends JPanel {
 		
 		/* GridBagLayout
 			GridBagConstraints(
-				x, y, w, h,				// °İÀÚÀÇ x, y, width, height
-				weight_x, weight_y,		// °¡ÁßÄ¡(´Ã¾î³ª´Â °Í ¿©ºÎ)
-				anchor, fill,			// Ã¤¿ì±â À§ÇÑ ±âÁØ, ¾î¶»°Ô Ã¤¿ïÁö
-				new Insets(top, left, bottom, right),	// ¿©¹é
-				padx, pady)				// padding°ª. »ç¿ë ¾ÈÇÔ.
+				x, y, w, h,				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ x, y, width, height
+				weight_x, weight_y,		// ï¿½ï¿½ï¿½ï¿½Ä¡(ï¿½Ã¾î³ªï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+				anchor, fill,			// Ã¤ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½î¶»ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½
+				new Insets(top, left, bottom, right),	// ï¿½ï¿½ï¿½ï¿½
+				padx, pady)				// paddingï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		 */
 		
 		this.setLayout(new GridBagLayout());

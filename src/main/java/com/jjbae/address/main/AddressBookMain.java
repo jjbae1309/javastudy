@@ -1,6 +1,6 @@
 package com.jjbae.address.main;
 
-import java.util.List;
+import javax.swing.UIManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +11,8 @@ import com.jjbae.address.vo.AddressVo;
 public class AddressBookMain {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookMain.class);
 	
-	
-	
 	public static void main(String[] args) {
+		/*
 		MemAddressBook addressBook = new MemAddressBook();
 		
 		AddressVo address1 = new AddressVo();
@@ -48,5 +47,25 @@ public class AddressBookMain {
 		LOGGER.debug("수정 완료");
 		
 		addressBook.debugData();
+		
+		AddressVo deleteParam = new AddressVo();
+		deleteParam.setSeqNum(2);
+		
+		addressBook.delete(deleteParam);
+		
+		LOGGER.debug("삭제 완료");
+		
+		addressBook.debugData();
+		*/
+		try {
+			 UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		 }
+		 catch (Exception e) { }
+		
+		AddressBookFrame frame = new AddressBookFrame();
+		frame.setTitle("주소록");
+		frame.setSize(800, 600);
+		frame.setVisible(true);
+		
 	}
 }
