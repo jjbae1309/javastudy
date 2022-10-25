@@ -61,14 +61,46 @@ public class AddressBookPanel extends JPanel {
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
 				0, 0));
-		/*
-		this.add(jLabel_Phone2);
-		this.add(jTextField_Phone2);
-		this.add(jLabel_Birth);
-		this.add(jTextField_Birth);
-		this.add(jLabel_Address);
-		this.add(jTextField_Address);
-		this.add(jButton_Add);
-		*/
+		
+		this.add(jLabel_Phone2, new GridBagConstraints(0, 2, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+		
+		this.add(jTextField_Phone2, new GridBagConstraints(1, 2, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH, 
+				new Insets(5, 5, 5, 5),
+				0, 0));
+		
+		this.add(jLabel_Birth, new GridBagConstraints(0, 3, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER,  GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+		
+		this.add(jTextField_Birth, new GridBagConstraints(1, 3, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+
+		this.add(jLabel_Address, new GridBagConstraints(0, 4, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+		this.add(jTextField_Address, new GridBagConstraints(1, 4, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+		this.add(jButton_Add, new GridBagConstraints(4, 9, 1, 1,
+				0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(5, 5, 5, 5),
+				0,0));
+		
 	}
 }
