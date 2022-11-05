@@ -4,13 +4,29 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.jjbae.address.service.MemAddressBook;
+import com.jjbae.address.vo.AddressVo;
 
 public class AddressBookPanel extends JPanel {
+	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookPanel.class);
+	
+	private MemAddressBook addressBook = new MemAddressBook();
+	
 	private JLabel jLabel_Name = new JLabel("이름");
 	private JTextField jTextField_Name = new JTextField();
 	private JLabel jLabel_Phone1 = new JLabel("전화번호1");
@@ -23,10 +39,20 @@ public class AddressBookPanel extends JPanel {
 	private JTextField jTextField_Address = new JTextField();
 	private JButton jButton_Add = new JButton("생성");
 	
+	private JScrollPane jScrollPane_Address = new JScrollPane();
+	private JTable jTable_Address = new JTable();
+	
+	private DefaultTableModel tableModel = new DefaultTableModel();
+	
 	public AddressBookPanel() {
 		initComponent();
+		initTable();
+		initEvent();
 	}
 	
+	/**
+	 * UI 컴포넌트 설정 및 배치
+	 */
 	private void initComponent() {
 		this.setLayout(new GridBagLayout());
 		jLabel_Name.setPreferredSize(new Dimension(100, 22));
@@ -66,7 +92,7 @@ public class AddressBookPanel extends JPanel {
 				0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
+				0, 0));
 		
 		this.add(jTextField_Phone2, new GridBagConstraints(1, 2, 1, 1,
 				0.0, 0.0,
@@ -78,29 +104,81 @@ public class AddressBookPanel extends JPanel {
 				0.0, 0.0,
 				GridBagConstraints.CENTER,  GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
+				0, 0));
 		
 		this.add(jTextField_Birth, new GridBagConstraints(1, 3, 1, 1,
 				0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
+				0, 0));
 
 		this.add(jLabel_Address, new GridBagConstraints(0, 4, 1, 1,
 				0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
+				0, 0));
 		this.add(jTextField_Address, new GridBagConstraints(1, 4, 1, 1,
 				0.0, 0.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
-		this.add(jButton_Add, new GridBagConstraints(4, 9, 1, 1,
+				0, 0));
+		this.add(jButton_Add, new GridBagConstraints(1, 5, 1, 1,
 				0.0, 0.0,
+				GridBagConstraints.EAST, GridBagConstraints.NONE,
+				new Insets(5, 5, 5, 5),
+				0, 0));
+		this.add(jScrollPane_Address, new GridBagConstraints(0, 6, 2, 1,
+				1.0, 1.0,
 				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(5, 5, 5, 5),
-				0,0));
+				0, 0));
 		
+		jScrollPane_Address.getViewport().add(jTable_Address);
+	}
+	
+	/**
+	 * 테이블에 대한 설정
+	 */
+	private void initTable() {
+		Vector<String> columnData = new Vector();
+		columnData.add("번호");
+		columnData.add("이름");
+		columnData.add("전화번호");
+		
+		tableModel.setColumnIdentifiers(columnData);
+		
+		
+		jTable_Address.setModel(tableModel);
+	}
+	
+	/**
+	 * 이벤트 처리를 정의
+	 */
+	private void initEvent() {
+		jButton_Add.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				LOGGER.debug("버튼 클릭");
+				
+				String name = jTextField_Name.getText();
+				String phone1 = jTextField_Phone1.getText();
+				String phone2 = jTextField_Phone2.getText();
+				String birth = jTextField_Birth.getText();
+				String address = jTextField_Address.getText();
+				
+				AddressVo addressVo = new AddressVo();
+				addressVo.setSeqNum(addressBook.getNewSeqNum());
+				addressVo.setName(name);
+				addressVo.setPhoneNum(phone1);
+				addressVo.setPhoneNum2(phone2);
+				addressVo.setBirth(birth);
+				addressVo.setAddress(address);
+				
+				addressBook.insert(addressVo);
+				
+				addressBook.debugData();
+			}
+		});
 	}
 }
