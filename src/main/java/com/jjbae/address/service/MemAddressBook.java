@@ -13,6 +13,7 @@ public class MemAddressBook implements AddressBookIf {
 	
 	private List<AddressVo> addressList = new ArrayList<>();
 	
+	@Override
 	public int getNewSeqNum() {
 		// addressList가 값이 있으면 
 		if (addressList.size() > 0) {

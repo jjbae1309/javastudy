@@ -5,7 +5,11 @@ import java.util.List;
 import com.jjbae.address.vo.AddressVo;
 
 public class FileAddressBook implements AddressBookIf {
-
+	@Override
+	public int getNewSeqNum() {
+		return 0;
+	}
+	
 	@Override
 	public List<AddressVo> select(AddressVo paramData) {
 		// TODO Auto-generated method stub

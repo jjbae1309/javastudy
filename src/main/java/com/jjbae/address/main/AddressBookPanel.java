@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -19,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jjbae.address.service.MemAddressBook;
+import com.jjbae.address.service.AddressBookIf;
+import com.jjbae.address.service.FileAddressBook;
 import com.jjbae.address.vo.AddressVo;
 
 public class AddressBookPanel extends JPanel {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookPanel.class);
 	
-	private MemAddressBook addressBook = new MemAddressBook();
+	//private AddressBookIf addressBook = new MemAddressBook();
+	private AddressBookIf addressBook = new FileAddressBook();
 	
 	private JLabel jLabel_Name = new JLabel("이름");
 	private JTextField jTextField_Name = new JTextField();
@@ -44,10 +47,15 @@ public class AddressBookPanel extends JPanel {
 	
 	private DefaultTableModel tableModel = new DefaultTableModel();
 	
+	private Vector<String> columnIdentifiers = new Vector();
+	private Vector dataVector = new Vector();
+	
 	public AddressBookPanel() {
 		initComponent();
 		initTable();
 		initEvent();
+		
+		//initData();
 	}
 	
 	/**
@@ -140,13 +148,16 @@ public class AddressBookPanel extends JPanel {
 	 * 테이블에 대한 설정
 	 */
 	private void initTable() {
-		Vector<String> columnData = new Vector();
-		columnData.add("번호");
-		columnData.add("이름");
-		columnData.add("전화번호");
+//		Vector<String> columnData = new Vector();
+//		columnData.add("번호");
+//		columnData.add("이름");
+//		columnData.add("전화번호");
+//		
+//		tableModel.setColumnIdentifiers(columnData);
 		
-		tableModel.setColumnIdentifiers(columnData);
-		
+		columnIdentifiers.add("번호");
+		columnIdentifiers.add("이름");
+		columnIdentifiers.add("전화번호");
 		
 		jTable_Address.setModel(tableModel);
 	}
@@ -177,8 +188,47 @@ public class AddressBookPanel extends JPanel {
 				
 				addressBook.insert(addressVo);
 				
-				addressBook.debugData();
+				//addressBook.debugData();
+				
+				reloadTable();
 			}
 		});
+	}
+	
+	/**
+	 * MemAddressBook에서 address 정보를 불러와 루프를 돌면서
+	 * oneDataVector에 생성&add 후, 다시 dataVector에 add한다.
+	 */
+	private void reloadTable() {
+		dataVector.clear();
+		
+		List<AddressVo> addressList = addressBook.select(null);
+		for (AddressVo oneAddress : addressList) {
+			Vector oneDataVector = new Vector();
+			oneDataVector.add(oneAddress.getSeqNum());
+			oneDataVector.add(oneAddress.getName());
+			oneDataVector.add(oneAddress.getPhoneNum());
+			
+			dataVector.add(oneDataVector);
+		}
+		
+		tableModel.setDataVector(dataVector, columnIdentifiers);
+		
+//		Vector oneDataVector = new Vector();
+//		oneDataVector.add("1");
+//		oneDataVector.add("배재준");
+//		oneDataVector.add("010-0000-0000");
+//		
+//		dataVector.add(oneDataVector);	
+//		
+//		oneDataVector = new Vector();
+//		oneDataVector.add("2");
+//		oneDataVector.add("배재율");
+//		oneDataVector.add("010-0000-0000");
+//		
+//		dataVector.add(oneDataVector);
+//		
+//		
+//		tableModel.setDataVector(dataVector, columnIdentifiers);
 	}
 }
