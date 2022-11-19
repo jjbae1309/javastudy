@@ -28,7 +28,7 @@ public class AddressBookPanel extends JPanel {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookPanel.class);
 	
 	//private AddressBookIf addressBook = new MemAddressBook();
-	private AddressBookIf addressBook = new FileAddressBook();
+	private AddressBookIf addressBook = new FileAddressBook("data/address.txt");
 	
 	private JLabel jLabel_Name = new JLabel("이름");
 	private JTextField jTextField_Name = new JTextField();
@@ -56,6 +56,7 @@ public class AddressBookPanel extends JPanel {
 		initEvent();
 		
 		//initData();
+		reloadTable();
 	}
 	
 	/**
