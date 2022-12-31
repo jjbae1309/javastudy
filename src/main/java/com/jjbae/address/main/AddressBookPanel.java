@@ -21,14 +21,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jjbae.address.service.AddressBookIf;
-import com.jjbae.address.service.FileAddressBook;
+import com.jjbae.address.service.DBAddressBook;
 import com.jjbae.address.vo.AddressVo;
 
 public class AddressBookPanel extends JPanel {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookPanel.class);
 	
 	//private AddressBookIf addressBook = new MemAddressBook();
-	private AddressBookIf addressBook = new FileAddressBook("data/address.txt");
+	//private AddressBookIf addressBook = new FileAddressBook("data/address.txt");
+	private AddressBookIf addressBook = new DBAddressBook("org.mariadb.jdbc.Driver",
+			"jdbc:mariadb://localhost:3306/jjbae", "root", "qowowns1!");
 	
 	private JLabel jLabel_Name = new JLabel("이름");
 	private JTextField jTextField_Name = new JTextField();
@@ -159,6 +161,7 @@ public class AddressBookPanel extends JPanel {
 		columnIdentifiers.add("번호");
 		columnIdentifiers.add("이름");
 		columnIdentifiers.add("전화번호");
+		columnIdentifiers.add("주소");	
 		
 		jTable_Address.setModel(tableModel);
 	}
@@ -209,6 +212,7 @@ public class AddressBookPanel extends JPanel {
 			oneDataVector.add(oneAddress.getSeqNum());
 			oneDataVector.add(oneAddress.getName());
 			oneDataVector.add(oneAddress.getPhoneNum());
+			oneDataVector.add(oneAddress.getAddress());
 			
 			dataVector.add(oneDataVector);
 		}
