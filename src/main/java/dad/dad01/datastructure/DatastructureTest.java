@@ -1,4 +1,4 @@
-package dad01.datastructure;
+package dad.dad01.datastructure;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,9 +28,9 @@ public class DatastructureTest {
 		}
 		
 		Map<Integer, String> map = new HashMap();
-		map.put(1, "¹è¼öÇö");
-		map.put(2, "¹èÀçÁØ");
-		map.put(3, "¹èÀçÀ²");
+		map.put(1, "ï¿½ï¿½ï¿½ï¿½ï¿½");
+		map.put(2, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		map.put(3, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		System.out.println(map.get(1));
 		System.out.println(map.get(2));

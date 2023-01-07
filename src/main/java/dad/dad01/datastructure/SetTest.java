@@ -25,6 +25,6 @@ public class SetTest {
 		}
 		
 		Person p1 = new Person();
-		p1.name
+		//p1.name
 	}
 }

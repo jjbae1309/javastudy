@@ -1,4 +1,4 @@
-package dad01.datastructure;
+package dad.dad01.datastructure;
 
 import chap07.sec03.exam02.Animal;
 import chap07.sec03.exam02.Cat;
