@@ -1,8 +1,5 @@
 package homework.jjbae.poker;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -15,18 +12,38 @@ public class PokerMain {
 		try {
 			CardInterface poker = new CardManager();
 			
-			Set<CardVo> userSet = poker.getCards(10);
-			Set<CardVo> pokerSet = poker.getCards(10);
+			Set<CardVo> player1Set = poker.getCards(5);
+			Set<CardVo> player2Set = poker.getCards(5);
 			
-			LOGGER.debug("userSet:" + userSet.toString());
-			LOGGER.debug("pokerSet:" + pokerSet.toString());
+			LOGGER.debug("player1Set:" + player1Set.toString());
+			LOGGER.debug("player2Set:" + player2Set.toString());
+
+			PokerGrade player1Grade = poker.getGrade(player1Set);
+			PokerGrade player2Grade = poker.getGrade(player2Set);
 			
-			LOGGER.debug("pokerSet:" + poker.getCards(10).toString());
-			LOGGER.debug("pokerSet:" + poker.getCards(10).toString());
-			LOGGER.debug("pokerSet:" + poker.getCards(10).toString());
+			int player1GradeOrd = -1;
+			if (player1Grade != null) {
+				player1GradeOrd = player1Grade.ordinal();
+			}
 			
-			poker.clear();
-			LOGGER.debug("pokerSet:" + poker.getCards(10).toString());
+			LOGGER.debug("player1GradeOrd:" + player1GradeOrd);
+			
+			int player2GradeOrd = -1;
+			if (player2Grade != null) {
+				player2GradeOrd = player2Grade.ordinal();
+			}
+			
+			LOGGER.debug("player2GradeOrd:" + player2GradeOrd);
+			
+			if (player1GradeOrd == player2GradeOrd) {
+				LOGGER.debug("비김");
+			}
+			else if (player1GradeOrd > player2GradeOrd) {
+				LOGGER.debug("player1 승리");
+			}
+			else {
+				LOGGER.debug("player2 승리");
+			}
 /*		
 		int correctNum = 0;
 		

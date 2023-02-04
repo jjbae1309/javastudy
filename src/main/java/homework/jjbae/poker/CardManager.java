@@ -1,6 +1,9 @@
 package homework.jjbae.poker;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -62,5 +65,67 @@ public class CardManager implements CardInterface {
 		}
 		
 		return servingCards;
+	}
+
+	@Override
+	public PokerGrade getGrade(Set<CardVo> cards) {
+		// TODO Auto-generated method stub
+		Map<Integer, Integer> numMap = new HashMap<>();
+		
+		Iterator<CardVo> iter = cards.iterator();
+		while (iter.hasNext()) {
+			// CardVo를 하나씩 조회한다.
+			CardVo cardVo = iter.next();
+			
+			// CardVo의 숫자를 확인한다.
+			int cardNum = cardVo.getNum();
+			// 이전에 들어가 있는 값을 확인한다.
+			Integer prevValue = numMap.get(cardNum);
+			
+			if (prevValue == null) {
+				prevValue = 0;
+			}
+			
+			// 숫자를 담는 map에 해당 숫자를 key로 횟수를 담는다.
+			numMap.put(cardNum, prevValue + 1);
+		}
+		
+		int onePairCount = 0;
+		int tripleCount = 0;
+		
+		Set<Integer> cardKeySet = numMap.keySet();
+		Iterator<Integer> keyIter = cardKeySet.iterator();
+		while (keyIter.hasNext()) {
+			Integer oneKey = keyIter.next();
+			LOGGER.debug(String.format("[%s]:%s", oneKey, numMap.get(oneKey)));
+			
+			int count = numMap.get(oneKey);
+			
+			if (count == 3) {
+				tripleCount++;
+			}
+			else if (count == 2) {
+				onePairCount++;
+			}
+		}
+		
+		PokerGrade returnValue = null;
+		
+		if (onePairCount == 1 && tripleCount == 1) {
+			returnValue = PokerGrade.FULL_HOUSE;
+		}
+		else if (tripleCount == 1) {
+			returnValue = PokerGrade.TRIPLE;
+		}
+		else if (onePairCount == 2) {
+			returnValue = PokerGrade.TWO_PAIR;
+		}
+		else if (onePairCount == 1) {
+			returnValue = PokerGrade.ONE_PAIR;
+		}
+
+		LOGGER.debug("returnValue:" + returnValue);
+		
+		return returnValue;
 	}
 }
