@@ -1,4 +1,4 @@
-package homework.poker;
+package homework.homeworkPoker.homework1;
 
 public enum Symbol {
 	CLOVER

@@ -1,4 +1,4 @@
-package homework.homeworkPoker;
+package homework.poker3;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import homework.homeworkPoker.*;
+import homework.poker3.*;
 
 public class CardManager implements CardInterface {
 	private static Logger LOGGER = LoggerFactory.getLogger(CardManager.class);

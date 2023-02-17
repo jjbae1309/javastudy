@@ -1,4 +1,4 @@
-package homework.homeworkPoker;
+package homework.homeworkPoker.homework1;
 
 import java.util.HashMap;
 import java.util.Iterator;

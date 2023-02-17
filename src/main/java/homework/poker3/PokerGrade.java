@@ -1,4 +1,4 @@
-package homework.homeworkPoker;
+package homework.poker3;
 
 public enum PokerGrade {
 	ONE_PAIR

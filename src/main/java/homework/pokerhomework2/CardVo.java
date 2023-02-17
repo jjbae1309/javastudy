@@ -1,4 +1,4 @@
-package homework.homeworkPoker;
+package homework.pokerhomework2;
 
 public class CardVo {
 	private int num;
@@ -35,6 +35,7 @@ public class CardVo {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 	
@@ -46,8 +47,9 @@ public class CardVo {
 	@Override
 	public String toString() {
 		String cardString = null;
+		
 		switch (symbol) {
-		case CLOVER: 
+		case CLOVER:
 			cardString = "♣";
 			break;
 		case HEART:
@@ -58,9 +60,9 @@ public class CardVo {
 			break;
 		case SPADE:
 			cardString = "♠";
-			break;
-	}
-	
+			break;	
+		}
+		
 		switch (num) {
 		case 1:
 			cardString = cardString + "A";
@@ -77,6 +79,7 @@ public class CardVo {
 		default:
 			cardString += num;
 		}
+		
 		return cardString;
 	}
 }

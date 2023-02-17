@@ -1,4 +1,6 @@
-package homework.poker;
+package homework.poker3;
+
+import homework.poker3.Symbol;
 
 public class CardVo {
 	private int num;
@@ -49,7 +51,7 @@ public class CardVo {
 		String cardString = null;
 		
 		switch (symbol) {
-		case CLOVER:
+		case CLOVER: 
 			cardString = "♣";
 			break;
 		case HEART:
@@ -60,7 +62,7 @@ public class CardVo {
 			break;
 		case SPADE:
 			cardString = "♠";
-			break;	
+			break;
 		}
 		
 		switch (num) {

@@ -1,4 +1,4 @@
-package homework.poker;
+package homework.pokerhomework2;
 
 import java.util.HashSet;
 import java.util.Set;
