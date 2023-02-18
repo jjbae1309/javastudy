@@ -8,11 +8,6 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import homework.poker3.CardInterface;
-import homework.poker3.CardManager;
-import homework.poker3.CardVo;
-import homework.poker3.PokerGrade;
-
 public class PokerMain {
 	private static Logger LOGGER = LoggerFactory.getLogger(PokerMain.class);
 	

@@ -1,4 +1,4 @@
-package homework.pokerhomework2;
+package homework.pokerHomework2;
 
 import java.util.Set;
 

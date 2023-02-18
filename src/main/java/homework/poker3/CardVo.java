@@ -1,7 +1,5 @@
 package homework.poker3;
 
-import homework.poker3.Symbol;
-
 public class CardVo {
 	private int num;
 	private Symbol symbol;
