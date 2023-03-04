@@ -1,4 +1,4 @@
-package com.jjbae.address.service;
+package com.jjbae.app.address.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jjbae.address.vo.AddressVo;
+import com.jjbae.app.address.vo.AddressVo;
 
 public class MemAddressBook implements AddressBookIf {
 	private static Logger LOGGER = LoggerFactory.getLogger(MemAddressBook.class);

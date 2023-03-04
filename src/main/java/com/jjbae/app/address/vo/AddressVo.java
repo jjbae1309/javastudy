@@ -1,4 +1,4 @@
-package com.jjbae.address.vo;
+package com.jjbae.app.address.vo;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

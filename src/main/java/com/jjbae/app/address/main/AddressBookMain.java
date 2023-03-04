@@ -1,12 +1,12 @@
-package com.jjbae.address.main;
+package com.jjbae.app.address.main;
 
 import javax.swing.UIManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jjbae.address.service.MemAddressBook;
-import com.jjbae.address.vo.AddressVo;
+import com.jjbae.app.address.service.MemAddressBook;
+import com.jjbae.app.address.vo.AddressVo;
 
 public class AddressBookMain {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookMain.class);

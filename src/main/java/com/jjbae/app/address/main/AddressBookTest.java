@@ -1,4 +1,4 @@
-package com.jjbae.address.main;
+package com.jjbae.app.address.main;
 
 public class AddressBookTest {
 	public static void main(String[] args) {

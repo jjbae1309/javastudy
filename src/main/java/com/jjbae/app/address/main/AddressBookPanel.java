@@ -1,4 +1,4 @@
-package com.jjbae.address.main;
+package com.jjbae.app.address.main;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -20,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jjbae.address.service.AddressBookIf;
-import com.jjbae.address.service.DBAddressBook;
-import com.jjbae.address.vo.AddressVo;
+import com.jjbae.app.address.service.AddressBookIf;
+import com.jjbae.app.address.service.DBAddressBook;
+import com.jjbae.app.address.vo.AddressVo;
 
 public class AddressBookPanel extends JPanel {
 	private static Logger LOGGER = LoggerFactory.getLogger(AddressBookPanel.class);

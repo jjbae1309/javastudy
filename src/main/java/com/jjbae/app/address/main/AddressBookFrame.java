@@ -1,4 +1,4 @@
-package com.jjbae.address.main;
+package com.jjbae.app.address.main;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;

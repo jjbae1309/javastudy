@@ -1,8 +1,8 @@
-package com.jjbae.address.service;
+package com.jjbae.app.address.service;
 
 import java.util.List;
 
-import com.jjbae.address.vo.AddressVo;
+import com.jjbae.app.address.vo.AddressVo;
 
 public interface AddressBookIf {
 	/**
