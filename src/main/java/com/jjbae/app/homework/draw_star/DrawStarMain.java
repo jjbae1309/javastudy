@@ -1,33 +1,21 @@
-package com.jjbae.app.lesson.derby;
+package com.jjbae.app.homework.draw_star;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.jjbae.app.homework.draw_star.DrawStarFrame;
-
-public class DerbyMain {
-	private static Logger LOGGER = LoggerFactory.getLogger(DerbyMain.class);
-	
+public class DrawStarMain {
 	public static void main(String[] args) {
-		LOGGER.debug("main start");
-		
 //		DerbyGame derbyGame = new DerbyGame();
 //		derbyGame.run();
 		
+		// 화면 크기
 		Dimension scrDim = Toolkit.getDefaultToolkit().getScreenSize();
-				
+		
 		int xPos = (scrDim.width - DrawStarFrame.WIDTH) / 2;
 		int yPos = (scrDim.height - DrawStarFrame.HEIGHT) / 2;
-				
+		
 		DrawStarFrame frame = new DrawStarFrame();
 		frame.setBounds(xPos, yPos, DrawStarFrame.WIDTH, DrawStarFrame.HEIGHT);
 		frame.setVisible(true);
-		
-		frame.run();
-		
-		LOGGER.debug("activeCount:" + Thread.activeCount());
 	}
 }

@@ -1,9 +1,11 @@
 package com.jjbae.app.homework.derby;
 
+import com.jjbae.app.homework.draw_star.DrawStarPanel;
+
 public class GameThread extends Thread {
-	private DerbyPanel derbyPanel;
+	private DrawStarPanel derbyPanel;
 	
-	public GameThread(DerbyPanel panel) {
+	public GameThread(DrawStarPanel panel) {
 		this.derbyPanel = panel;
 	}
 	
