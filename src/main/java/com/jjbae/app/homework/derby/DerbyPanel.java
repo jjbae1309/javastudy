@@ -16,8 +16,7 @@ public class DerbyPanel extends JPanel {
 	
 	private ImageIcon[] horseImageIcon;
 	
-	//private Thread gameThread = null;
-//	private GameThread gameThread = null;
+	private Thread gameThread = null;
 	
 	private int horseXPos = 100;
 	private int horse2XPos = 100;

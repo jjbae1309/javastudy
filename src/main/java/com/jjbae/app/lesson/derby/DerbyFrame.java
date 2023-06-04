@@ -11,7 +11,7 @@ public class DerbyFrame extends JFrame {
 	public static final int WIDTH = 1024;
 	public static final int HEIGHT = 768;
 	
-	private DrawStarPanel derbyPanel = new DrawStarPanel();
+	private DerbyFrame derbyPanel = new DerbyFrame();
 	
 	public DerbyFrame() {
 		initComponent();

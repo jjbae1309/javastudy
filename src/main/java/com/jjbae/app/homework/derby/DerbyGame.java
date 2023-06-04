@@ -1,7 +1,5 @@
 package com.jjbae.app.homework.derby;
 
-import com.jjbae.app.lesson.derby.Horse;
-
 public class DerbyGame {
 	public void run() {
 		Horse horse1 = new Horse();

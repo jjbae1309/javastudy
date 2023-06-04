@@ -11,9 +11,7 @@ import com.jjbae.app.homework.draw_star.DrawStarFrame;
 public class DerbyMain {
 	private static Logger LOGGER = LoggerFactory.getLogger(DerbyMain.class);
 	
-	public static void main(String[] args) {
-		LOGGER.debug("main start");
-		
+	public static void main(String[] args) {		
 //		DerbyGame derbyGame = new DerbyGame();
 //		derbyGame.run();
 		
@@ -22,7 +20,7 @@ public class DerbyMain {
 		int xPos = (scrDim.width - DrawStarFrame.WIDTH) / 2;
 		int yPos = (scrDim.height - DrawStarFrame.HEIGHT) / 2;
 				
-		DrawStarFrame frame = new DrawStarFrame();
+		DerbyFrame frame = new DerbyFrame();
 		frame.setBounds(xPos, yPos, DrawStarFrame.WIDTH, DrawStarFrame.HEIGHT);
 		frame.setVisible(true);
 		
