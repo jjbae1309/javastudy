@@ -1,4 +1,4 @@
-package dad03.string;
+package dad.dad03.string;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,6 +105,10 @@ public class StringTest {
 		LOGGER.debug("s.indexOf" + s.indexOf(s, c));
 		
 		
-
+		String p = "1,2,3,4";
+		String[] words = p.split(",");
+		for (int i = 0; i < words.length; i++) {
+			LOGGER.debug(words[i]);
+		}
 	}
 }

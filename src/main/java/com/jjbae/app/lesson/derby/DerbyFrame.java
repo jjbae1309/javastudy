@@ -5,13 +5,9 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-import com.jjbae.app.homework.draw_star.DrawStarPanel;
-
 public class DerbyFrame extends JFrame {
-	public static final int WIDTH = 1024;
-	public static final int HEIGHT = 768;
 	
-	private DerbyFrame derbyPanel = new DerbyFrame();
+	private DerbyPanel derbyPanel = new DerbyPanel();
 	
 	public DerbyFrame() {
 		initComponent();
@@ -28,10 +24,10 @@ public class DerbyFrame extends JFrame {
 	
 	private void initEvent() {
 		this.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+		@Override
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
 			}
-		});	
+		});
 	}
 }

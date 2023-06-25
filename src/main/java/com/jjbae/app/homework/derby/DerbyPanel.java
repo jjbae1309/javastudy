@@ -91,10 +91,6 @@ public class DerbyPanel extends JPanel {
 		g2d.setFont(new Font("Dialog", Font.BOLD, 16));
 		g2d.drawString("Robin", horseXPos + 30, horseYPos);
 		
-		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse2XPos, horse2YPos, 120, 120, this);
 		
-		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse3XPos, horse3YPos, 120, 120, this);
-		
-		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse4XPos, horse4YPos, 120, 120, this);
 	}
 }

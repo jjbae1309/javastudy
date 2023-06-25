@@ -12,12 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DerbyPanel extends JPanel {
-	private static Logger LOGGER = LoggerFactory.getLogger(DerbyPanel.class);
-		
+	private static Logger LOGGER = (LoggerFactory.getLogger(DerbyPanel.class));
+	
 	private ImageIcon[] horseImageIcon;
-		
-	private Thread gameThread = null;
-		
+	
 	private int horseXPos = 100;
 	private int horse2XPos = 100;
 	private int horse3XPos = 100;
@@ -29,64 +27,56 @@ public class DerbyPanel extends JPanel {
 	private int horse4YPos = 400;
 	
 	private int horseFrameNum;
-	private int currentHorseFrame;	
+	private int currentHorseFrame;
 	
 	public DerbyPanel() {
 		initImage();
 	}
 	
 	private void initImage() {
-//		horseImageIcon = new ImageIcon("src/main/resources/image/horse1.png");
 		horseImageIcon = new ImageIcon[12];
 		for (int i = 0; i < horseImageIcon.length; i++) {
 			horseImageIcon[i] = new ImageIcon("src/main/resources/image/horse/horse" + (i + 1) + ".png");
 		}
 		
-		// 전체 말의 프레임수
 		horseFrameNum = horseImageIcon.length;
 	}
-	public void run() {
-		gameThread = new Thread() {
-			public void run() {
-				while (horseXPos < 1000) {
-					horseXPos += (int)(Math.random() * 10 + 1);
-					horse2XPos += (int)(Math.random() * 11 + 1);
-					horse3XPos += (int)(Math.random() * 12 + 1);
-					horse4XPos += (int)(Math.random() * 13 + 1);
-					
-					currentHorseFrame++;
-					if (currentHorseFrame >= horseFrameNum) {
-						currentHorseFrame = 0;
-					}
-					
-					repaint();
-					
-					try {
-						Thread.sleep(10);
-					}
-					catch (Exception ex) {}
-				}
-			}
-		};
-	}
 	
+	 public void run() {
+		 while (horseXPos < 1000) {
+			 horseXPos += (int)(Math.random() * 10 + 1);
+			 horse2XPos += (int)(Math.random() * 11 + 1);
+			 horse3XPos += (int)(Math.random() * 12 + 1);
+			 horse4XPos += (int)(Math.random() * 13 + 1);
+			 
+			 currentHorseFrame++;
+			 if (currentHorseFrame >= horseFrameNum) {
+				 currentHorseFrame = 0;
+			 }
+			 
+			 repaint();
+			 
+			 try {
+				 Thread.sleep(50);
+			 }
+			 catch (Exception ex) {}
+		 }
+	}
 	@Override
 	public void paintComponent(Graphics g) {
 		LOGGER.debug("paint!!");
-			
+		
 		Graphics2D g2d = (Graphics2D)g;
-			
+		
 		g2d.setColor(Color.white);
+		g2d.fillRect(0, 0, getWidth(), getHeight());
+		
+		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horseXPos, horseYPos, 120, 120, this);
 		g2d.setFont(new Font("Dialog", Font.BOLD, 16));
 		g2d.drawString("Robin", horseXPos + 30, horseYPos);
 		
-		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse2XPos, horse2YPos, 120, 120, this);
-		
+		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse2XPos, horse2YPos, 120, 120, this);	
 		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse3XPos, horse3YPos, 120, 120, this);
-		
 		g2d.drawImage(horseImageIcon[currentHorseFrame].getImage(), horse4XPos, horse4YPos, 120, 120, this);
-		
-	
-	
 	}
 }
