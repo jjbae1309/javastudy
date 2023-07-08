@@ -1,7 +1,6 @@
 package com.jjbae.app.homework.test;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
@@ -113,7 +112,7 @@ public class TestMain11_20 {
 */		
 		/**
 		 * 12단계. soccer.dat 파일에 입력데이터를 넣고, 해당 파일을 읽어 들여 데이터를 입력받는다.
-		 * 사용자 인풋으로 축구 선수의 수를 입력 받고,
+		 * 첫번째 라인에서 축구 선수의 수를 입력 받고,
 		 * 갯수만큼 "이름,포지션(FW, MF, DF, GK),속력,가속력,골결정력(0~10)" 입력받는다.
 		 * 선수별로 속력,가속력,골결정력 합을 구하고
 		 * 각 포지션별 합이 가장 높은사람을 출력한다.
@@ -122,5 +121,88 @@ public class TestMain11_20 {
 		 *     DF 배재율(27)
 		 *     GK 홍길동(28)
 		 */
+		
+//		Player p = new Player();
+//		p.setName("배재준");
+//		p.setPosition("FW");
+//		p.setSpeed(6);
+//		p.setAccel(7);
+//		p.setGoal(8);
+//		
+//		LOGGER.debug("p = " + p);
+		
+		// 1. Player 정보를 담는다.
+		Player[] playerArr = null;
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/soccer.dat"))) {
+			int soccerNum = Integer.parseInt(reader.readLine());
+			
+			playerArr = new Player[soccerNum];
+			
+			for (int i = 0; i < soccerNum; i++) {
+				String[] data = reader.readLine().split(",");
+				
+				playerArr[i] = new Player();
+				playerArr[i].setName(data[0]);
+				playerArr[i].setPosition(data[1]);
+				
+				int speed = Integer.parseInt(data[2]);
+				int accel = Integer.parseInt(data[3]);
+				int goal = Integer.parseInt(data[4]);
+				int total = speed + accel + goal;
+				
+				playerArr[i].setSpeed(speed);
+				playerArr[i].setAccel(accel);
+				playerArr[i].setGoal(goal);
+				playerArr[i].setTotal(total);
+				
+				LOGGER.debug("p = " + playerArr[i]);
+			}
+		}
+		catch (Exception ex) {
+			LOGGER.error(ex.getMessage(), ex);
+		}
+
+		// 2. 루프를 돌면서 포지션별 합이 가장 높은 사람을 찾는다.
+		int fwMax = 0;
+		int mfMax = 0;
+		int dfMax = 0;
+		int gkMax = 0;
+		
+		Player fwPlayer = null;
+		Player mfPlayer = null;
+		Player dfPlayer = null;
+		Player gkPlayer = null;
+		
+		for (int k = 0; k < playerArr.length; k++) {
+			Player onePlayer = playerArr[k];
+			
+			if (onePlayer.getPosition().equals("FW") && fwMax < onePlayer.getTotal()) {	
+				fwPlayer = onePlayer;
+				fwMax = onePlayer.getTotal();
+			}
+			else if (onePlayer.getPosition().equals("MF") && mfMax < onePlayer.getTotal()) {
+				mfPlayer = onePlayer;
+				mfMax = onePlayer.getTotal();
+			}
+			else if (onePlayer.getPosition().equals("DF") && dfMax < onePlayer.getTotal()) {
+				dfPlayer = onePlayer;
+				dfMax = onePlayer.getTotal();
+			}
+			else if (onePlayer.getPosition().equals("GK") && gkMax < onePlayer.getTotal()) {
+				gkPlayer = onePlayer;
+				gkMax = onePlayer.getTotal();
+			}
+		}
+		LOGGER.debug(String.format("FW %s(%s)", fwPlayer.getName(), fwMax));
+		LOGGER.debug(String.format("MF %s(%s)", mfPlayer.getName(), mfMax));
+		LOGGER.debug(String.format("DF %s(%s)", dfPlayer.getName(), dfMax));
+		LOGGER.debug(String.format("GK %s(%s)", gkPlayer.getName(), gkMax));
+
+		// 숙제
+		// 1) soccer.dat에 HP(체력)을 추가한다.
+		// 2) 30명의 데이터를 입력한다.
+		// 3) 합(total)을 구할때 속력, 가속력, 골결정력, 체력의 합을 구한다.
+		// 4) 포지션별 total의 평균을 구한다.
+		
 	}
 }
