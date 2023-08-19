@@ -2,7 +2,8 @@ package com.jjbae.app.homework.test;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,8 +132,8 @@ public class TestMain11_20 {
 //		
 //		LOGGER.debug("p = " + p);
 		
-		// 1. Player 정보를 담는다.
-		Player[] playerArr = null;
+		//1. Player 정보를 담는다.
+/*		Player[] playerArr = null;
 		try (BufferedReader reader = new BufferedReader(new FileReader("data/soccer.dat"))) {
 			int soccerNum = Integer.parseInt(reader.readLine());
 			
@@ -197,12 +198,192 @@ public class TestMain11_20 {
 		LOGGER.debug(String.format("MF %s(%s)", mfPlayer.getName(), mfMax));
 		LOGGER.debug(String.format("DF %s(%s)", dfPlayer.getName(), dfMax));
 		LOGGER.debug(String.format("GK %s(%s)", gkPlayer.getName(), gkMax));
-
+*/
 		// 숙제
 		// 1) soccer.dat에 HP(체력)을 추가한다.
-		// 2) 30명의 데이터를 입력한다.
+		// 2) 10명의 데이터를 입력한다.
 		// 3) 합(total)을 구할때 속력, 가속력, 골결정력, 체력의 합을 구한다.
 		// 4) 포지션별 total의 평균을 구한다.
+/*		
+		Player[] playerArr = null;
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/soccer.dat"))) {
+			int soccerNum = Integer.parseInt(reader.readLine());
+			
+			playerArr = new Player[soccerNum];
+			for (int i = 0; i < playerArr.length; i++) {
+				String[] data = reader.readLine().split(",");
+				
+				playerArr[i] = new Player();
+				playerArr[i].setName(data[0]);
+				playerArr[i].setPosition(data[1]);
+				
+				int speed = Integer.parseInt(data[2]);
+				int accel = Integer.parseInt(data[3]);
+				int goal = Integer.parseInt(data[4]);
+				int health = Integer.parseInt(data[5]);
+				int total = speed + accel + goal + health;
+				
+				playerArr[i].setSpeed(speed);
+				playerArr[i].setAccel(accel);
+				playerArr[i].setGoal(goal);
+				playerArr[i].setTotal(total);
+				playerArr[i].setHealth(health);
+				LOGGER.debug("p = " + playerArr[i]);
+			}
+		}
+		catch (Exception ex) {
+			LOGGER.error(ex.getMessage(), ex);
+		}
+		int fwTotal = 0;
+		int mfTotal = 0;
+		int dfTotal = 0;
+		int gkTotal = 0;
 		
+		int fwPlayer = 0;
+		int mfPlayer = 0;
+		int dfPlayer = 0;
+		int gkPlayer = 0;
+		
+		for (int k = 0; k < playerArr.length; k++) {
+			Player onePlayer = playerArr[k];
+			
+			if (onePlayer.getPosition().equals("FW")) {
+				fwPlayer++;
+				fwTotal = fwTotal + playerArr[k].getTotal();
+			}
+			else if (onePlayer.getPosition().equals("MF")) {
+				mfPlayer++;
+				mfTotal = mfTotal + playerArr[k].getTotal();
+			}
+			else if (onePlayer.getPosition().equals("DF")) {
+				dfPlayer++;
+				dfTotal = dfTotal + playerArr[k].getTotal();
+			}
+			else if (onePlayer.getPosition().equals("GK")) {
+				gkPlayer++;
+				gkTotal = gkTotal + playerArr[k].getTotal();
+			}
+		}
+		
+		LOGGER.debug(String.format("fw의 총점 평균은 %s입니다.", fwTotal / fwPlayer));
+		LOGGER.debug(String.format("mf의 총점 평균은 %s입니다.", mfTotal / mfPlayer));
+		LOGGER.debug(String.format("df의 총점 평균은 %s입니다.", dfTotal / dfPlayer));
+		LOGGER.debug(String.format("gk의 총점 평균은 %s입니다.", gkTotal / gkPlayer));
+*/		
+		/**
+		 * 13단계. Array를 List로 바꾼다.
+		 */
+/*		
+		//Player[] playerArr2 = new Player[10];
+		List<Player> playerList = new ArrayList<>();
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/soccer1.dat"))) {
+			String readLine = null;
+			while ((readLine = reader.readLine()) != null) {
+				String[] words = readLine.split(",");
+				
+//				Player onePlayer = new Player();
+//				onePlayer.setName(words[0]);
+//				onePlayer.setPosition(words[1]);
+//				onePlayer.setSpeed(Integer.parseInt(words[2]));
+//				onePlayer.setAccel(Integer.parseInt(words[3]));
+//				onePlayer.setGoal(Integer.parseInt(words[4]));
+//				onePlayer.setHealth(Integer.parseInt(words[5]));
+				Player onePlayer = new Player(words[0], 
+						words[1], 
+						Integer.parseInt(words[2]),
+						Integer.parseInt(words[3]),
+						Integer.parseInt(words[4]),
+						Integer.parseInt(words[5])
+						);
+
+				playerList.add(onePlayer);
+			}
+		}
+		catch (Exception ex) {
+			LOGGER.error(ex.getMessage(), ex);
+		}
+		
+		Player maxSpeedPlayer = null;
+		Player lowGoalPlayer = null;
+		for (Player onePlayer : playerList) {
+			if (maxSpeedPlayer == null || maxSpeedPlayer.getSpeed() < onePlayer.getSpeed()) {
+				maxSpeedPlayer = onePlayer;
+			}
+			
+			if (lowGoalPlayer == null || lowGoalPlayer.getGoal() > onePlayer.getGoal()) {
+				lowGoalPlayer = onePlayer;
+			}
+		}
+		
+		LOGGER.debug(String.format("가장 빠른 플레이어는 %s이고 스피드는 %s입니다.", 
+				maxSpeedPlayer.getName(), maxSpeedPlayer.getSpeed()));
+		
+		LOGGER.debug(String.format("가장 골 결정력이 낮은 플레이어는 %s이고 수치는 %s입니다.", 
+				lowGoalPlayer.getName(), lowGoalPlayer.getGoal()));
+*/		
+//		List<BaseballPlayer> playerList = new ArrayList<>();
+		
+		// STEP1. 파일에서 읽어서 담는다.
+/*		try (BufferedReader reader = new BufferedReader(new FileReader("data/baseball.dat"))) {
+			String readLine = null;
+			while ((readLine = reader.readLine()) != null) {
+				String[] data = readLine.split(",");
+				
+				BaseballPlayer onePlayer = new BaseballPlayer(
+						data[0], 
+						data[1],
+						Integer.parseInt(data[2]), 
+						Integer.parseInt(data[3]));
+				
+				playerList.add(onePlayer);
+			}
+		}
+		catch (Exception ex) {
+			LOGGER.error(ex.getMessage(), ex);
+		}
+		
+		// STEP2. 담은 내용을 출력한다.
+		for (BaseballPlayer onePlayer : playerList) {
+			LOGGER.debug(String.format("[%s]%s %.3f", onePlayer.getPosition(), onePlayer.getName(), onePlayer.getAvg()));
+		}
+		
+*/		
+		/**
+		 * 숙제. baseball.dat에 삼진, 포볼수 추가
+		 * 1) 삼진율, 출루율=(안타수 + 포볼수) / (타수 + 포불수)을 구한다.
+		 * 2) 타율이 제일 높은 선수를 출력한다.
+		 */
+		
+		List<BaseballPlayer> playerList = new ArrayList<>();
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader("data/baseball.dat"))) {
+			String readLine = null;
+			while ((readLine = reader.readLine()) != null) {
+				String[] data = readLine.split(",");
+				
+				BaseballPlayer onePlayer = new BaseballPlayer(
+						data[0],
+						data[1],
+						Integer.parseInt(data[2]),
+						Integer.parseInt(data[3]),
+						Integer.parseInt(data[4]),
+						Integer.parseInt(data[5]));
+					
+				playerList.add(onePlayer);
+			}
+
+		}
+		catch (Exception ex) {
+			LOGGER.error(ex.getMessage(), ex);
+		}
+		
+		BaseballPlayer bestHitter = null;
+		for (BaseballPlayer onePlayer : playerList) {
+			if (bestHitter.getAvg() < onePlayer.getAvg()) {
+			
+			}
+		}
+		LOGGER.debug("타율이 가장 높은 선수는 %s 입니다.", bestHitter);
 	}
 }

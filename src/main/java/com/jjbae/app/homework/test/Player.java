@@ -7,6 +7,20 @@ public class Player {
 	private int accel;
 	private int goal;
 	private int total;
+	private int health;
+	
+	public Player() {
+	}
+	
+	public Player(String name, String position, int speed, int accel, int goal, int health) {
+		this.name = name;
+		this.position = position;
+		this.speed = speed;
+		this.accel = accel;
+		this.goal = goal;
+		this.health = health;
+		this.total = speed + accel + goal + health;
+	}
 	
 	public String getName() {
 		return name;
@@ -56,9 +70,17 @@ public class Player {
 		this.total = total;
 	}
 	
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("name=%s, position=%s, speed=%s, accel=%s, goal=%s, total=%s", 
-				name, position, speed, accel, goal, total);
+		return String.format("name=%s, position=%s, speed=%s, accel=%s, goal=%s, health=%s, total=%s", 
+				name, position, speed, accel, goal, health, total);
 	}
 }
