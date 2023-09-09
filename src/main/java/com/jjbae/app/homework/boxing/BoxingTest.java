@@ -61,16 +61,28 @@ public class BoxingTest {
 			// 2. 나이가 제일 어린 사람
 			// 3. 전체 복서의 평균 체력
 			Boxer maxWeightBoxer = null;
-			
+			Boxer youngestBoxer = null;
+			int totalHealth = 0;
+			float healthAvg = 0;
 			for (Boxer oneBoxer : boxerList) {
 				LOGGER.debug(oneBoxer.toString());
 				
 				if (maxWeightBoxer == null || maxWeightBoxer.getWeight() < oneBoxer.getWeight()) {
 					maxWeightBoxer = oneBoxer;
 				}
+				
+				if (youngestBoxer == null || youngestBoxer.getAge() > oneBoxer.getAge()) {
+					youngestBoxer = oneBoxer;
+				}
+				
+				totalHealth = totalHealth + oneBoxer.getHealth();
 			}
 			
+			healthAvg = (float)totalHealth / boxerList.size();
+			
 			LOGGER.debug(String.format("가장 체중이 많이 나가는 선수는 %s입니다.", maxWeightBoxer.getName()));
+			LOGGER.debug(String.format("가장 나이가 어린 선수는 %s입니다.", youngestBoxer.getName()));
+			LOGGER.debug(String.format("복서들의 평균 체력은 %s입니다.", healthAvg));
 		}
 		catch (Exception ex) {
 			LOGGER.error(ex.getMessage(), ex);
