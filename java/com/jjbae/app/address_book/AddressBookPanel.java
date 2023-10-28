@@ -4,10 +4,13 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -48,9 +51,10 @@ public class AddressBookPanel extends JPanel {
 		initComponent();
 		// 테이블 관련 설정한다.
 		initTable();
-		
+		// 이벤트 관련 설정한다.
+		initEvent();
 		// 테스트
-		initTestData();
+//		initTestData();
 		
 	}
 	
@@ -63,7 +67,7 @@ public class AddressBookPanel extends JPanel {
 		jPanel_Command.setLayout(gridBagLayout);
 		jPanel_Result.setLayout(gridBagLayout);
 	}
-	
+		
 	/**
 	 * 기본 사이즈를 설정한다.
 	 */
@@ -210,6 +214,30 @@ public class AddressBookPanel extends JPanel {
 		*/
 		
 		jTable_Result.setModel(tableModel);
+	}
+	
+	private void initEvent() {
+		jButton_Add.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(AddressBookPanel.this, "추가 버튼을 눌렀습니다.");
+			}
+		});
+		
+		jButton_Change.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(AddressBookPanel.this, "수정 버튼을 눌렀습니다.");
+			}
+		});
+		
+		jButton_Delete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(AddressBookPanel.this, "삭제 버튼을 눌렀습니다.");
+			}
+		});
 	}
 	
 	private void initTestData() {
