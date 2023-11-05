@@ -1,6 +1,8 @@
 package com.jjbae.app.address_book;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -87,6 +89,9 @@ public class AddressBookPanel extends JPanel {
 	
 	// 메소드
 	private void initComponent() {
+		jLabel_Name.setFont(new Font("DialogInput", getFont().BOLD, 20));
+		jLabel_Name.setForeground(Color.red);
+		
 		this.add(jPanel_Input, new GridBagConstraints(
 				0, 0, 1, 1,
 				1.0, 0.0,
