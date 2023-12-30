@@ -22,6 +22,7 @@ public class ClockPanel extends JPanel {
 	public ClockPanel() {
 		initComponent();
 		initTime();
+		initThread();
 	}
 	
 	private void initComponent() {
@@ -52,11 +53,38 @@ public class ClockPanel extends JPanel {
 		
 		currentTime = sdf.format(date);
 		
-		LOGGER.debug(currentTime);
+		LOGGER.debug(currentTime + "(" + Thread.activeCount() + ")");
+	}
+	
+	private void initThread() {
+		Thread t = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while (true) {
+					try {
+						Thread.sleep(1000);	
+					}
+					catch (InterruptedException e) {
+						LOGGER.error(e.getMessage(), e);
+					}
+					
+					// 1초마다 처리.
+					initTime();
+					repaint();
+				}
+			}
+		}, "TimeCollector");
+		
+		t.start();
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		
+		g.setColor(Color.BLACK);
 		g.setFont(new Font("DialogInput", Font.BOLD, 20));
 		g.drawString(currentTime, 65, 100);
 	}

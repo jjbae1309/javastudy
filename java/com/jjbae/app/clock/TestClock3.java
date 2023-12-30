@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 public class TestClock3 {
 	private static Logger LOGGER = LoggerFactory.getLogger(TestClock3.class);
 	
+	private static final long UNIT_DATE = (1000 * 60 * 60 * 24);
+	
 	public static void main(String[] args) throws Exception {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
@@ -41,8 +43,8 @@ public class TestClock3 {
 		LOGGER.debug("diffHour:" + diffHour);
 		
 		// 만 19세 되는 날까지 남은 일수를 구하시오
-		String birthday = "2009-04-13";
-		
+		// String birthday = "2009-04-13";
+		String birthday = "1975-09-04";
 		// 1. birthday를 Date로 변환
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date birthDate = sdf.parse(birthday);
@@ -72,7 +74,22 @@ public class TestClock3 {
 		 *   - SimpleDateFormat 객체의 format()을 통해 생성
 		 */
 		// 1) 만 30세까지의 남은 일수를 구하시오.
+		Calendar _30YearLaterCal = Calendar.getInstance();
+		_30YearLaterCal.setTime(birthDate);
+		_30YearLaterCal.add(Calendar.YEAR, 30);
+		Date _30YearDate = _30YearLaterCal.getTime();
+		
+		long diff3 = _30YearDate.getTime() - curDate.getTime();
+		long yearDiff = diff3 / (1000 * 60 * 60 * 24);
+		LOGGER.debug("30세까지의 남은 일수는:" + yearDiff);
+				
 		// 2) 현재까지 몇일을 살았는지 구한다. 
+		long now = cal.getTime().getTime();
+		long birth = birthDate.getTime();
+		long diff4 = now - birth;
+		dateDiff = diff4 / UNIT_DATE;
+		LOGGER.debug(String.format("살아온 날짜: %d", dateDiff));
+		
 		
 	}
 }

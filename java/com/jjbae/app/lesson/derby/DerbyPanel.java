@@ -64,7 +64,7 @@ public class DerbyPanel extends JPanel {
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		LOGGER.debug("paint!!");
+		LOGGER.debug("paint!! Thread Count" + Thread.activeCount());
 		
 		Graphics2D g2d = (Graphics2D)g;
 		
